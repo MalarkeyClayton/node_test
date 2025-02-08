@@ -61,6 +61,11 @@ app.delete('/api/test/:id', async (req, res) => {
   }
 });
 
+
+app.get('/', async () => {
+    return ("sdfsdfds");
+})
+
 // Start the server
 app.listen(8001, () => {
   console.log(`Server running on port 8001`);
