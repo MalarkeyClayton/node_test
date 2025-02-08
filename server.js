@@ -7,6 +7,11 @@ const app = express();
 
 app.use(express.json());  // Middleware to parse JSON requests
 
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log('MongoDB Connection Error:', err));
+
 // CRUD Routes
 
 // 1. CREATE a new Test item
@@ -57,9 +62,6 @@ app.delete('/api/test/:id', async (req, res) => {
 });
 
 // Start the server
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        app.listen(8001, () =>
-            console.log("Server running on port 8001!")
-        );
-    });
+app.listen(8001, () => {
+  console.log(`Server running on port 8001`);
+});
