@@ -5,6 +5,8 @@ const Test = require("./models/Test"); // Import the Test model
 
 const app = express();
 
+const PORT = process.env.PORT || 8001
+
 app.use(express.json()); // Middleware to parse JSON requests
 
 // MongoDB connection
@@ -73,6 +75,6 @@ app.delete("/api/test/:id", async (req, res) => {
 
 
 // Start the server
-app.listen(8001, () => {
-  console.log(`Server running on port 8001`);
+app.listen(PORT, () => {
+  console.log(`Server running`);
 });
